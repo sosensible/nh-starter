@@ -50,3 +50,14 @@ Then checkout your server logs, analaytics and more in the [NuxtHub Admin](https
 
 You can also deploy using [Cloudflare Pages CI](https://hub.nuxt.com/docs/getting-started/deploy#cloudflare-pages-ci).
 
+## Log
+
+* Nuxt DevTools was blank, empty.
+  * Added pinia manually ( pnpm add pinia @pinia/nuxt )
+  * npm i -D @nuxt/devtools
+
+* Set up DaisyUI
+  * tailwindcss (DevTools)
+  * color-mode (DevTools)
+  * pnpm add -D daisyui@latest ( https://daisyui.com/docs/install/ )
+  * went to DaisyUI tab in docs, clicked through files and added, updated as needed

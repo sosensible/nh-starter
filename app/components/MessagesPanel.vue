@@ -2,7 +2,7 @@
 const { data: messages, refresh } = await useFetch('/api/messages')
 const newMessage = ref('')
 
-async function sendMessage (){
+async function sendMessage() {
   if (!newMessage.value.trim()) return
   await $fetch('/api/messages', {
     method: 'POST',
@@ -20,7 +20,7 @@ async function sendMessage (){
     <h3>Messages</h3>
     <form @submit.prevent="sendMessage">
       <input v-model="newMessage" placeholder="Type a message">
-      <button type="submit">
+      <button type="submit" class="btn btn-outline">
         Send
       </button>
     </form>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { data: images, refresh } = await useFetch('/api/images')
 
-async function uploadImage (e: Event) {
+async function uploadImage(e: Event) {
   // https://hub.nuxt.com/docs/storage/blob#useupload
   const upload = useUpload('/api/images/upload', {
     multiple: false
@@ -12,10 +12,10 @@ async function uploadImage (e: Event) {
       form.reset()
       await refresh()
     })
-    .catch((err) => alert('Failed to upload image:\n'+ err.data?.message))
+    .catch((err) => alert('Failed to upload image:\n' + err.data?.message))
 }
 
-async function deleteImage (pathname: string) {
+async function deleteImage(pathname: string) {
   await $fetch(`/api/images/${pathname}`, { method: 'DELETE' })
   await refresh()
 }
@@ -25,20 +25,16 @@ async function deleteImage (pathname: string) {
   <div>
     <h3>Images</h3>
     <form @submit.prevent="uploadImage">
-      <label>Upload an image: <input type="file" name="image" accept="image/jpg,image/png"></label>
-      <button type="submit">
+      <label>Upload an image: <br />
+        <input type="file" name="image" accept="image/jpg,image/png" class="input mr-3">
+      </label>
+      <button type="submit" class="btn btn-outline">
         Upload
       </button>
     </form>
     <p>
-      <img
-        v-for="image of images"
-        :key="image.pathname"
-        width="200"
-        :src="`/images/${image.pathname}`"
-        :alt="image.pathname"
-        @dblclick="deleteImage(image.pathname)"
-      >
+      <img v-for="image of images" :key="image.pathname" width="200" :src="`/images/${image.pathname}`"
+        :alt="image.pathname" @dblclick="deleteImage(image.pathname)">
     </p>
     <p v-if="images?.length">
       <i>Tip: delete an image by double-clicking on it.</i>
